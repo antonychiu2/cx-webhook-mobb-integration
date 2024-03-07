@@ -1,12 +1,11 @@
+
 # Mobb/Checkamrx Fixer on pull requests
 # This workflow defines the needed steps to run Checkmarx on every pull request and pass the results to Mobb Fixer.
 
 name: "Mobb/Checkmarx CLI"
-
 on:
   pull_request:
     branches: ["*"]
-
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -20,19 +19,19 @@ jobs:
       run: |
         wget -O cxcli.zip https://download.checkmarx.com/9.5.0/Plugins/CxConsolePlugin-1.1.30.zip
         unzip cxcli.zip
-        ls -l
         
     - name: Run Checkmarx CLI Scan
       run: |
+        # Make sure to to change your ProjectName to the format 'CxServer/SP/Company/Users/my project'. See CX documentation for more details: https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html
         ./runCxConsole.sh Scan -v \
-          -ProjectName 'CxServer\Mobb\Mobb-Autofixer' \
+          -ProjectName 'CxServer\Mobb\Mobb-Autofix-Project' \
           -CxServer ${{ secrets.CHECKMARX_URL }} \
           -cxuser ${{ secrets.CHECKMARX_USERNAME }} \
           -cxpassword ${{ secrets.CHECKMARX_PASSWORD }} \
           -LocationType folder \
           -LocationPath "./" \
           -SASTHigh 1 \
-          -ReportXML "report.xml"    
+          -ReportXML "report.xml"
       shell: bash -l {0}
       
     - name: Archive report
@@ -40,8 +39,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: sast-report
-        path: Checkmarx/Reports/report.xml
-        
+        path: Checkmarx/Reports/report.xml        
     - name: Run Mobb on the findings and get fixes
       if: always()
       uses: mobb-dev/action/review@v1.1
