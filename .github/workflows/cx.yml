@@ -19,6 +19,7 @@ on:
 jobs:
   scan-and-fix:
     name: Issue Comment
+    if: ${{ github.event.issue.pull_request }} # This makes sure that the comment originates from a PR and not an issue comment
     runs-on: 'ubuntu-latest'
     timeout-minutes: 360
     permissions:
@@ -31,8 +32,11 @@ jobs:
 
       - name: Test
         run: |
-          echo 'success'
-        shell: bash -l {0}
+          echo A comment on PR $NUMBER
+          env
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+
   
       # - name: Run Mobb on the findings and get fixes
       #   if: always()
