@@ -41,7 +41,7 @@ jobs:
           
         env:
           NUMBER: ${{ github.event.issue.number }}
-          PAYLOAD: ${{ github.event.issue_comment.body }}
+          PAYLOAD: ${{ github.event.issueComment.body }}
           COMMENT: ${{ github.event.issue.comments }}
           BODY: ${{ github.event.issue.body }}
 
