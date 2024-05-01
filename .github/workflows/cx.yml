@@ -37,6 +37,7 @@ jobs:
           echo The comment: $COMMENT
           echo The body: $BODY
           echo The number: $NUMBER
+          echo "Comment Body: ${{ github.event.comment.body }}"
           env
           
         env:
@@ -45,10 +46,6 @@ jobs:
           COMMENT: ${{ github.event.issue.comments }}
           BODY: ${{ github.event.issue.body }}
      
-      - name: Extract comment body
-        id: extract_comment_body
-        run: echo "Comment Body: ${{ github.event.comment.body }}"
-
   
       # - name: Run Mobb on the findings and get fixes
       #   if: always()
