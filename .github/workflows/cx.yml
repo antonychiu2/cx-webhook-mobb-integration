@@ -38,6 +38,9 @@ jobs:
           echo The body: $BODY
           echo The number: $NUMBER
           echo "Comment Body: ${{ github.event.comment.body }}"
+          echo "2: ${{ github.event.comment }}"
+          echo "3: ${{ github.event.comment.issue_url }}"
+
           env
           
         env:
