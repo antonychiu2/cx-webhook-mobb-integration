@@ -44,6 +44,12 @@ jobs:
           PAYLOAD: ${{ github.event.issueComment.body }}
           COMMENT: ${{ github.event.issue.comments }}
           BODY: ${{ github.event.issue.body }}
+  extract-comment-body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract comment body
+        id: extract_comment_body
+        run: echo "Comment Body: ${{ github.event.comment.body }}"
 
   
       # - name: Run Mobb on the findings and get fixes
