@@ -48,7 +48,13 @@ jobs:
           PAYLOAD: ${{ github.event.issueComment.body }}
           COMMENT: ${{ github.event.issue.comments }}
           BODY: ${{ github.event.issue.body }}
-     
+
+      - name: Run condition
+        if: $ ${{ contains(github.event.comment.body,'checkmarx report') }}
+        run: |
+          echo The term \"checkmarx report\" is founnd in the string for \"github.event.comment.body\"
+        env:
+          PAYLOAD: ${{ github.event.issueComment.body }}
   
       # - name: Run Mobb on the findings and get fixes
       #   if: always()
