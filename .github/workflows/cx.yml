@@ -51,7 +51,7 @@ jobs:
 
       - name: Run condition
         run: |
-          echo "$COMMENT" | sed -n 's/scan\?id=\([^&]*\)/\1/p'
+          echo "$COMMENT" | sed -n 's/scans\?id=\([^&]*\)/\1/p'
         env:
           COMMENT: ${{ github.event.comment.body }}
   
