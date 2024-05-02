@@ -19,7 +19,7 @@ on:
 jobs:
   scan-and-fix:
     name: Issue Comment
-    if: ${{ github.event.issue.pull_request }} # This makes sure that the comment originates from a PR and not an issue comment
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,'checkmarx report') }} # This makes sure that the comment originates from a PR and not an issue comment
     runs-on: 'ubuntu-latest'
     timeout-minutes: 360
     permissions:
