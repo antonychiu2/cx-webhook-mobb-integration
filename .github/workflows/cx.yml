@@ -48,10 +48,11 @@ jobs:
           echo ${{github.event.issue.id }}
           echo ${{github.event.issue.pull_request }}
           echo ${{github.event.issue.pull_request.url }}
-          echo ${{github.event.issue.pull_request.head }}
-          echo ${{github.event.issue.pull_request.head.ref }}
-          echo ${{github.event.issue.pull_request.head.label }}
-          echo ${{github.event.issue.pull_request.head.sha }}
+          echo ${{github.event.issue.pull_request.base.label }}
+          echo ${{github.event.issue.pull_request.base.ref }}
+          echo ${{github.event.issue.pull_request.base.repo }}
+          echo ${{github.event.issue.pull_request.base.sha }}
+          echo ${{github.event.issue.pull_request.base.user.name }}
           
           
         env:
