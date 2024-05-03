@@ -42,6 +42,12 @@ jobs:
           echo "3: ${{ github.event.comment.issue_url }}"
 
           env
+          echo ${{github.event.issue }}
+          echo ${{github.event.issue.comments }}
+          echo ${{github.event.issue.comments_url }}
+          echo ${{github.event.issue.id }}
+          echo ${{github.event.issue.pull_request }}
+          echo ${{github.event.issue.pull_request.url }}
           
         env:
           NUMBER: ${{ github.event.issue.number }}
