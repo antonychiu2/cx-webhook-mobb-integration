@@ -81,6 +81,11 @@ jobs:
           SCANNER=checkmarx
           PR_NUMBER=${{ github.event.issue.number }}
           GITHUB_HEAD_REF=$(curl -s ${{github.event.issue.pull_request.url }} | jq -r '.head.ref')
+          echo $REPO
+          echo $SCANNER
+          echo $PR_NUMBER
+          echo $GITHUB_HEAD_REF
+          echo GITHUB_SHA
           OUT=$(npx --yes mobbdev@latest review  -r $REPO --ref $GITHUB_HEAD_REF --ch $GITHUB_SHA --api-key ${{ secrets.MOBB_API_TOKEN }} -f report.json  --pr $PR_NUMBER --github-token ${{ secrets.GITHUB_TOKEN }} --scanner $SCANNER)
           RETVAL=$?
           if [ $RETVAL -ne 0 ]; then
