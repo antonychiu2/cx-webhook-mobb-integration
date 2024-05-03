@@ -41,33 +41,17 @@ jobs:
           echo "2: ${{ github.event.comment }}"
           echo "3: ${{ github.event.comment.issue_url }}"
 
-          env
+          
           echo ${{github.event.issue }}
           echo ${{github.event.issue.comments }}
           echo ${{github.event.issue.comments_url }}
           echo ${{github.event.issue.id }}
           echo ${{github.event.issue.pull_request }}
           echo ${{github.event.issue.pull_request.url }}
-          echo ${{github.event.issue.pull_request.diff_url  }}
-          echo ${{github.event.issue.pull_request.html_url  }}
-          echo ${{github.event.issue.pull_request.merged_at  }}
-          echo ${{github.event.issue.pull_request.patch_url  }}
-          echo ${{github.event.issue.pull_request.head  }}
-          echo ${{github.event.issue.pull_request.head.label   }}
-          echo ${{github.event.issue.pull_request.head.ref  }}
-          echo ${{github.event.issue.pull_request.head.repo  }}
-          echo ${{github.event.issue.pull_request.head.sha  }}
+          curl -s ${{github.event.issue.pull_request.url }} | jq -r '.head.ref'
+          env
           
-
-
           
-          echo ${{github.event.pull_request.comments }}
-          echo ${{github.event.pull_request.node_id }}
-          echo ${{github.event.pull_request.base.label }}
-          echo ${{github.event.pull_request.base.ref }}
-          echo ${{github.event.pull_request.base.repo }}
-          echo ${{github.event.pull_request.base.sha }}
-          echo ${{github.event.pull_request.base.user.name }}
           
           
         env:
