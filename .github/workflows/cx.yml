@@ -52,6 +52,11 @@ jobs:
           echo ${{github.event.issue.pull_request.html_url  }}
           echo ${{github.event.issue.pull_request.merged_at  }}
           echo ${{github.event.issue.pull_request.patch_url  }}
+          echo ${{github.event.issue.head  }}
+          echo ${{github.event.issue.head.label   }}
+          echo ${{github.event.issue.head.ref  }}
+          echo ${{github.event.issue.head.repo  }}
+          echo ${{github.event.issue.head.sha  }}
           
 
 
