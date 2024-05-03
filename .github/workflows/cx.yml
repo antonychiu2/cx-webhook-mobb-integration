@@ -56,13 +56,13 @@ jobs:
 
 
           
-          echo ${{github.event.issue.pull_request.id }}
-          echo ${{github.event.issue.pull_request.node_id }}
-          echo ${{github.event.issue.pull_request.base.label }}
-          echo ${{github.event.issue.pull_request.base.ref }}
-          echo ${{github.event.issue.pull_request.base.repo }}
-          echo ${{github.event.issue.pull_request.base.sha }}
-          echo ${{github.event.issue.pull_request.base.user.name }}
+          echo ${{github.event.pull_request.comments }}
+          echo ${{github.event.pull_request.node_id }}
+          echo ${{github.event.pull_request.base.label }}
+          echo ${{github.event.pull_request.base.ref }}
+          echo ${{github.event.pull_request.base.repo }}
+          echo ${{github.event.pull_request.base.sha }}
+          echo ${{github.event.pull_request.base.user.name }}
           
           
         env:
