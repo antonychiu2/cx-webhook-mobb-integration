@@ -48,6 +48,16 @@ jobs:
           echo ${{github.event.issue.id }}
           echo ${{github.event.issue.pull_request }}
           echo ${{github.event.issue.pull_request.url }}
+          echo ${{github.event.issue.pull_request.diff_url  }}
+          echo ${{github.event.issue.pull_request.html_url  }}
+          echo ${{github.event.issue.pull_request.merged_at  }}
+          echo ${{github.event.issue.pull_request.patch_url  }}
+          
+
+
+          
+          echo ${{github.event.issue.pull_request.id }}
+          echo ${{github.event.issue.pull_request.node_id }}
           echo ${{github.event.issue.pull_request.base.label }}
           echo ${{github.event.issue.pull_request.base.ref }}
           echo ${{github.event.issue.pull_request.base.repo }}
