@@ -69,7 +69,7 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: "Mobb fix analysis"
           state: "pending"
-          sha: ${{steps.env.head-sha}}
+          sha: ${{steps.env.outputs.head-sha}}
           
       - name: Get Checkmarx Report
         run: |
@@ -112,7 +112,7 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: "Mobb fix analysis"
           state: "success"
-          sha: ${{steps.env.head-sha}}
+          sha: ${{steps.env.outputs.head-sha}}
           
 
       - uses: Sibz/github-status-action@v1
@@ -121,5 +121,5 @@ jobs:
           context: "Mobb fix report link"
           state: "success"
           target_url: ${{ steps.run-npx-mobb-dev.outputs.fix-report-url }}
-          sha: ${{steps.env.head-sha}}
+          sha: ${{steps.env.outputs.head-sha}}
           
