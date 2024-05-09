@@ -30,7 +30,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Test
+      - id: env 
+        name: Set Up Environment
         run: |
           echo A comment on PR $NUMBER
           echo The payload: $PAYLOAD
@@ -51,7 +52,10 @@ jobs:
           curl -s ${{github.event.issue.pull_request.url }} | jq -r '.head.ref'
           env
           
-          
+          OUT=$(curl -s ${{github.event.issue.pull_request.url }} | jq -r '.head.sha')
+          echo $OUT
+          echo "head-sha=$OUT" >> $GITHUB_OUTPUT
+
           
           
         env:
@@ -65,7 +69,7 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: "Mobb fix analysis"
           state: "pending"
-          sha: ${{github.sha}}
+          sha: ${{steps.env.head-sha}}
           
       - name: Get Checkmarx Report
         run: |
@@ -108,7 +112,7 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: "Mobb fix analysis"
           state: "success"
-          sha: ${{github.sha}}
+          sha: ${{steps.env.head-sha}}
           
 
       - uses: Sibz/github-status-action@v1
@@ -117,5 +121,5 @@ jobs:
           context: "Mobb fix report link"
           state: "success"
           target_url: ${{ steps.run-npx-mobb-dev.outputs.fix-report-url }}
-          sha: ${{github.sha}}
+          sha: ${{steps.env.head-sha}}
           
