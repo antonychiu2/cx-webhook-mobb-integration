@@ -38,12 +38,6 @@ jobs:
           OUT=$(curl -s ${{github.event.issue.pull_request.url }} | jq -r '.head.sha')
           echo $OUT
           echo "head-sha=$OUT" >> $GITHUB_OUTPUT
-
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-          PAYLOAD: ${{ github.event.issueComment.body }}
-          COMMENT: ${{ github.event.issue.comments }}
-          BODY: ${{ github.event.issue.body }}
       
       # This is an optional steps, it outputs the status of the job in the PR by showing it's 'pending'
       - uses: Sibz/github-status-action@v1
