@@ -36,7 +36,7 @@ jobs:
           cx-tenant: ${{secrets.CX_TENANT }}
           cx-api-token: ${{ secrets.CX_API_TOKEN  }}
           cx-base-uri: ${{ secrets.CX_BASE_URI }}
-          cx-base-auth-uri: ${{ secrets.CX_BASE_AUTH_URI  }}
+          cx-base-auth-uri: ${{ secrets.CX_BASE_AUTH_URI }}
           api-key: ${{ secrets.MOBB_API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
