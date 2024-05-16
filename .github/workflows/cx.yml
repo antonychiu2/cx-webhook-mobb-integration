@@ -16,8 +16,8 @@ on:
     types: [created]
 
 jobs:
-  scan-and-fix:
-    name: Issue Comment
+  report-and-fix:
+    name: Get Report and Fix
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,'Checkmarx One – Scan Summary & Details') }} # This makes sure that the comment originates from a PR and not an issue comment
     runs-on: 'ubuntu-latest'
     timeout-minutes: 360
@@ -39,6 +39,7 @@ jobs:
           cx-base-auth-uri: ${{ secrets.CX_BASE_AUTH_URI }}
           api-key: ${{ secrets.MOBB_API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
 
       # - id: env 
       #   name: Set Up Environment
