@@ -9,12 +9,11 @@
 # MOBB_API_TOKEN - your mobb user credentials (autumatially set if you used the Mobb app to configure the integration)
 # GITHUB_TOKEN - automatically set by GitHub
 
-name: "Mobb/Checkmarx test name2"
+name: "Mobb/Checkmarx"
 
 on:
   issue_comment:
     types: [created]
-
 
 jobs:
   scan-and-fix:
@@ -30,8 +29,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-
-
       - name: Run Mobb GH Fixer monitor for CxOne Comments
         if: always()
         uses: mobb-dev/cx-mobb-fixer-action@main
@@ -42,10 +39,6 @@ jobs:
           cx-base-auth-uri: ${{ secrets.CX_BASE_AUTH_URI  }}
           api-key: ${{ secrets.MOBB_API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-
 
       # - id: env 
       #   name: Set Up Environment
