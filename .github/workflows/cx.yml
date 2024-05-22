@@ -33,13 +33,9 @@ jobs:
         if: always()
         uses: mobb-dev/cx-mobb-fixer-action@test-only-cxapikey
         with:
-          cx-tenant: ${{secrets.CX_TENANT }}
           cx-api-token: ${{ secrets.CX_API_TOKEN  }}
-          cx-base-uri: ${{ secrets.CX_BASE_URI }}
-          cx-base-auth-uri: ${{ secrets.CX_BASE_AUTH_URI }}
-          api-key: ${{ secrets.MOBB_API_TOKEN }}
+          mobb-api-token: ${{ secrets.MOBB_API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
 
       # - id: env 
       #   name: Set Up Environment
