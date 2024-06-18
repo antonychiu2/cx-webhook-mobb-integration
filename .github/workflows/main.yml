@@ -34,3 +34,4 @@ jobs:
           cx-api-token: ${{ secrets.CX_API_TOKEN  }}
           mobb-api-token: ${{ secrets.MOBB_API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          cx-timeout: 20000
