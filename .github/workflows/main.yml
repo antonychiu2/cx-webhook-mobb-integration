@@ -19,10 +19,19 @@ jobs:
     runs-on: 'ubuntu-latest'
     timeout-minutes: 360
     permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
       pull-requests: write
+      repository-projects: write
+      security-events: write
       statuses: write
-      contents: read
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
