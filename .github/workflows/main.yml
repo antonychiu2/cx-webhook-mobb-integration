@@ -20,10 +20,10 @@ jobs:
     timeout-minutes: 360
     permissions: write-all
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
+      # - name: Checkout repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: ${{ github.head_ref }}
 
       - name: Run Mobb GH Fixer monitor for CxOne Comments
         if: always()
