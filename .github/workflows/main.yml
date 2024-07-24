@@ -22,11 +22,10 @@ jobs:
       pull-requests: write
       statuses: write
       contents: read
-
     steps:
       - name: Run Mobb GH Fixer monitor for CxOne Comments
         if: always()
-        uses: mobb-dev/cx-mobb-fixer-action@using_official_mobbdev_review
+        uses: mobb-dev/cx-mobb-fixer-action@v1.5
         with:
           cx-api-token: ${{ secrets.CX_API_TOKEN  }}
           mobb-api-token: ${{ secrets.MOBB_API_TOKEN }}
